@@ -27,6 +27,7 @@ SOFTWARE.
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <algorithm>
 
 Int8EntropyCalibrator::Int8EntropyCalibrator(const uint32_t& batchSize, const std::string& calibImages,
 	const std::string& calibImagesPath,

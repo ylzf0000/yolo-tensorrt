@@ -22,7 +22,7 @@
       <Filter>Source Files</Filter>
     </ClInclude>
     <ClInclude Include="..\..\extra\class_timer.hpp">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -76,5 +76,8 @@
     <CudaCompile Include="..\..\modules\hardswish.cu">
       <Filter>Source Files</Filter>
     </CudaCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>

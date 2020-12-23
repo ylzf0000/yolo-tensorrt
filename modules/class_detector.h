@@ -1,9 +1,10 @@
 #ifndef CLASS_DETECTOR_H_
 #define CLASS_DETECTOR_H_
-
-#include "API.h"
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 #include <iostream>
-#include <opencv2/opencv.hpp>
+#include "opencv2/opencv.hpp"
+#include "../extra/API.h"
+//#include "API.h"
 
 struct Result
 {

@@ -25,6 +25,7 @@ SOFTWARE.
 
 #include "trt_utils.h"
 #include <NvInferRuntimeCommon.h>
+#define _SILENCE_EXPERIMENTAL_FILESYSTEM_DEPRECATION_WARNING
 #include <experimental/filesystem>
 #include <fstream>
 #include <iomanip>
