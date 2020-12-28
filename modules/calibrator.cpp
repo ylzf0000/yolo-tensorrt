@@ -27,13 +27,14 @@ SOFTWARE.
 #include <fstream>
 #include <iostream>
 #include <iterator>
+#include <random>
 
 Int8EntropyCalibrator::Int8EntropyCalibrator(const uint32_t& batchSize, const std::string& calibImages,
-	const std::string& calibImagesPath,
-	const std::string& calibTableFilePath,
-	const uint64_t& inputSize, const uint32_t& inputH,
-	const uint32_t& inputW, const std::string& inputBlobName,
-	const std::string &s_net_type_) :
+                                             const std::string& calibImagesPath,
+                                             const std::string& calibTableFilePath,
+                                             const uint64_t& inputSize, const uint32_t& inputH,
+                                             const uint32_t& inputW, const std::string& inputBlobName,
+                                             const std::string &s_net_type_) :
     m_BatchSize(batchSize),
     m_InputH(inputH),
     m_InputW(inputW),
@@ -48,8 +49,9 @@ Int8EntropyCalibrator::Int8EntropyCalibrator(const uint32_t& batchSize, const st
     {
         m_ImageList = loadImageList(calibImages, calibImagesPath);
         m_ImageList.resize(static_cast<int>(m_ImageList.size() / m_BatchSize) * m_BatchSize);
-        std::random_shuffle(m_ImageList.begin(), m_ImageList.end(),
-                            [](int i) { return rand() % i; });
+        std::random_device rd;
+        std::mt19937 g(rd());
+        std::shuffle(m_ImageList.begin(), m_ImageList.end(), g);
     }
 
     NV_CUDA_CHECK(cudaMalloc(&m_DeviceInput, m_InputCount * sizeof(float)));
