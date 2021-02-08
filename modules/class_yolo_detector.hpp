@@ -1,4 +1,4 @@
-#ifndef CLASS_YOLO_DETECTOR_HPP_
+﻿#ifndef CLASS_YOLO_DETECTOR_HPP_
 #define CLASS_YOLO_DETECTOR_HPP_
 
 #include <opencv2/opencv.hpp>
@@ -44,7 +44,7 @@ public:
 	void detect(const std::vector<cv::Mat>	&vec_image,
 				std::vector<BatchResult> &vec_batch_result)
 	{
-		Timer timer;
+		//Timer timer;
 		std::vector<DsImage> vec_ds_images;
 		vec_batch_result.clear();
 		vec_batch_result.resize(vec_image.size());
@@ -53,9 +53,9 @@ public:
 			vec_ds_images.emplace_back(img, _vec_net_type[_config.net_type], _p_net->getInputH(), _p_net->getInputW());
 		}
 		cv::Mat trtInput = blobFromDsImages(vec_ds_images, _p_net->getInputH(),_p_net->getInputW());
-		timer.out("pre");
+		//timer.out("pre");
 		_p_net->doInference(trtInput.data, vec_ds_images.size());
-		timer.reset();
+		//timer.reset();
 		for (uint32_t i = 0; i < vec_ds_images.size(); ++i)
 		{
 			auto curImage = vec_ds_images.at(i);
@@ -83,7 +83,7 @@ public:
 			}
 			vec_batch_result[i] = vec_result;
 		}
-		timer.out("post");
+		//timer.out("post");
 	}
 
 private:
